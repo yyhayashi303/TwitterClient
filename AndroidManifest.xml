@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="local.yhayashi.twitter.activity"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:name=".TwitterClientBean">
+        <uses-library android:name="com.google.android.maps" />
+        <activity android:name=".TwitterClientHome"
+                  android:label="@string/app_name"
+                  android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TwitterOAuth" />
+        <activity android:name=".TweetMain" android:configChanges="orientation|keyboardHidden"/>
+        <activity android:name=".HashTagMain" android:configChanges="orientation|keyboardHidden" />
+        <activity android:name=".Nearby" android:configChanges="orientation|keyboardHidden" />
+        <activity android:name="local.yhayashi.twitter.map.TweetsMap" />
+        <activity android:name=".TweetDetail" />
+        <activity android:name=".UserDetail" android:configChanges="orientation|keyboardHidden" />
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+</manifest>

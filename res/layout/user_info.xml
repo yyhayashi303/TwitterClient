@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:paddingBottom="10dp">
+	<ImageView
+		android:id="@+id/item_detail_icon"
+		android:layout_width="75dp"
+		android:layout_height="75dp"
+		android:paddingTop="10dp"
+		android:paddingRight="10dp"
+		android:paddingBottom="10dp" />
+	<LinearLayout
+		android:id="@+id/user_detail"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingTop="10dp">
+		<TextView
+			android:id="@+id/item_detail_user_name"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:textSize="16sp" />
+		<TextView
+			android:id="@+id/item_detail_screen_name"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:textSize="18sp" />
+		<TextView
+			android:id="@+id/item_detail_time"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:textSize="14sp" />
+		<TextView
+			android:id="@+id/item_detail_location"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+			android:visibility="gone"
+			android:textSize="12sp" />
+	</LinearLayout>
+</LinearLayout>

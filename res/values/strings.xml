@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TwitterClientActivity!</string>
+    <string name="app_name">Hayashi_TweetMap</string>
+    <string name="item_time">%1$</string>
+
+    <!-- 共通 -->
+    <string name="load_tweet">ツイートを取得中です...</string>
+    <string name="load_nearly_tweet">近くのツイートを取得中です...</string>
+    <string name="context_menu_title">ツイート</string>
+    <string name="context_menu_reply">返信</string>
+    <string name="context_menu_share">共有</string>
+    <string name="share_text">\@%1$s\n%2$s</string>
+    <string name="btn_refresh">更新</string>
+    <string name="location_load_failed">現在地の取得に失敗しました。</string>
+    <string name="location_loading">現在地を特定しています...</string>
+    <string name="now_loading">読み込み中...</string>
+    <string name="dialog_connected_failed_title">ステータスを更新できません</string>
+    <string name="dialog_connected_failed_message">サービスと接続が確立できませんでした。しばらく経ってからお試しください。</string>
+    <string name="dialog_connected_failed_positive">リトライ</string>
+    <string name="dialog_connected_failed_negative">閉じる</string>
+    <string name="footer_load_failure">読み込みに失敗しました</string>
+    <string name="footer_load_over">これ以上読み込めません</string>
+
+    <!-- Twitterメイン -->
+    <string name="btn_tweet">つぶやく</string>
+    <string name="btn_nearby">Nearby</string>
+    <string name="dialog_oauth_failed_title">OAuth認証に失敗しました</string>
+    <string name="dialog_oauth_failed_message">再度認証してください。</string>
+    <string name="dialog_oauth_failed_positive">はい</string>
+    <string name="dialog_oauth_failed_negative">いいえ</string>
+    <string name="dialog_hashtag_title">ハッシュタグ一覧</string>
+    <string name="dialog_hashtag_delete_confirm">削除しますか？</string>
+    <string name="dialog_hashtag_delete_yes">はい</string>
+    <string name="dialog_hashtag_delete_no">いいえ</string>
+    <string name="option_menu_hashtag_list">ハッシュタグ一覧</string>
+    <string name="option_menu_show_map">地図表示</string>
+
+    <!-- つぶやきページ -->
+    <string name="reply">\@%1$s</string>
+    <string name="length_over">140文字を超えています。</string>
+    <string name="progress_sending">送信中</string>
+    <string name="tweet_update_failed">送信できませんでした。</string>
+    <string name="location_disabled">位置情報が無効になっています。</string>
+    <string name="btn_send_tweet">送信</string>
+    <string name="btn_tweet_cancel">閉じる</string>
+    <string name="dialog_location_settings_tite">現在地機能を改善</string>
+    <string name="dialog_location_settings_message">"現在、位置情報は一部有効ではないものがあります。次のように設定すると、もっともすばやく正確に現在地を検出できるようになります:\n\n● 位置情報の設定でGPSとワイヤレスネットワークをオンにする\n\n● Wi-Fiをオンにする"</string>
+    <string name="dialog_location_settings_positive">設定</string>
+    <string name="dialog_location_settings_negative">スキップ</string>
+    <string name="dialog_update_location_message">現在地を更新しますか？</string>
+    <string name="dialog_update_location_positive">はい</string>
+    <string name="dialog_update_location_negative">いいえ</string>
+
+    <!-- Nearby -->
+    <string name="title_nearby">Nearby %1$s</string>
+    <string name="btn_map">地図表示</string>
+    <string name="btn_update_location">現在地更新</string>
+    <string name="dialog_update_location_failed_positive">リトライ</string>
+    <string name="dialog_update_location_failed_negative">閉じる</string>
+
+    <!-- 詳細 -->
+    <string name="detail_screan_name">\@%1$s</string>
+    <string name="btn_detail_reply">返信</string>
+    <string name="btn_detail_follow">フォロー</string>
+
+    <!-- Hashtag -->
+    <string name="hashtag_add">登録しました。</string>
+    <string name="hashtag_already_added">既に登録されています。</string>
+</resources>

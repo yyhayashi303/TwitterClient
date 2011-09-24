@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:weightSum="1">
+	<EditText
+		android:id="@+id/input_tweet"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:maxLength="200"
+		android:gravity="top|left"
+		android:layout_weight="1">
+		<requestFocus></requestFocus>
+	</EditText>
+	<LinearLayout
+		android:id="@+id/location_container"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp">
+		<ProgressBar
+			android:id="@+id/location_progress"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:visibility="gone" />
+		<CheckBox
+			android:id="@+id/location_off_check"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
+		<TextView
+			android:id="@+id/location"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="12sp"
+			android:layout_weight="1" />
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/tw_btn_container"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/gray"
+		android:paddingLeft="5dp"
+		android:paddingRight="5dp"
+		android:paddingTop="5dp">
+		<Button
+			android:id="@+id/btn_send_tweet"
+			android:text="@string/btn_send_tweet"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:layout_weight="1" />
+		<Button
+			android:id="@+id/btn_tweet_cancel"
+			android:text="@string/btn_tweet_cancel"
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:layout_weight="1" />
+	</LinearLayout>
+</LinearLayout>
