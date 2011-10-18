@@ -62,7 +62,8 @@
     <!-- 詳細 -->
     <string name="detail_screan_name">\@%1$s</string>
     <string name="btn_detail_reply">返信</string>
-    <string name="btn_detail_follow">フォロー</string>
+    <string name="btn_detail_follow">フォローする</string>
+    <string name="btn_detail_release_follow">フォロー解除</string>
 
     <!-- Hashtag -->
     <string name="hashtag_add">登録しました。</string>

@@ -78,7 +78,7 @@
 				android:layout_weight="1" />
 			<Button
 				android:id="@+id/btn_detail_follow"
-				android:text="@string/btn_detail_follow"
+				android:enabled="false"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1" />

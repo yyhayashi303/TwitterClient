@@ -43,6 +43,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -62,9 +63,9 @@ import android.widget.TextView;
 
 public class TwitterClientHome extends Activity implements View.OnClickListener {
 	/** コンシューマキー */
-	private static final String CONSUMER_KEY="jtG5TfJNrVr7B2G0zi8MAw";
+	private static final String CONSUMER_KEY="Aq4r35CRSieNSdGUY6Rocg";
 	/** コンシューマシークレット */
-	private static final String CONSUMER_SECRET = "QEr7FR8c48OHANeIIZZSvbxY9bjEraHe4dyTACYoE";
+	private static final String CONSUMER_SECRET = "wpWkewcBhMq0Id8PltiOI3tJ7mj7jRnUpu2mQ9GHM";
 	/** OAuth認証アクティビティ起動リクエストコード */
 	private static final int REQUEST_OAUTH = 0;
 	/** ツイートアクティビティ起動リクエストコード */
@@ -288,11 +289,12 @@ public class TwitterClientHome extends Activity implements View.OnClickListener 
 			intent.putExtra(PARAM_OAUTH_URL, requestToken.getAuthorizationURL());
 			startActivityForResult(intent, REQUEST_OAUTH);
 		} catch (TwitterException e) {
+			Log.e("","",  e);
 			showDialog(DIALOG_OAUTH_FAILED);
 		}
 	}
 
-	/**
+	/**	
 	 * ListView初期化
 	 */
 	private void initListView() {
@@ -359,7 +361,6 @@ public class TwitterClientHome extends Activity implements View.OnClickListener 
 
 	private void createUserInfo() {
 //		try {
-//			new ArrayList<Long>();
 //			long[] aa = twitter.getFriendsIDs(-1L).getIDs();
 //			Arrays.asList(aa);
 //			twitter.getFriendsIDs(-1L);
@@ -526,6 +527,7 @@ public class TwitterClientHome extends Activity implements View.OnClickListener 
 		menu.setHeaderTitle(getString(R.string.context_menu_title));
 		menu.add(Menu.NONE, CONTEXT_MENU_REPLY, Menu.NONE, getString(R.string.context_menu_reply));
 		menu.add(Menu.NONE, CONTEXT_MENU_SHARE, Menu.NONE, getString(R.string.context_menu_share));
+		menu.add(Menu.NONE, Menu.FIRST + 3, Menu.NONE, "リツイート");
 	}
 
 	/**

@@ -14,15 +14,19 @@ import local.yhayashi.twitter.common.HashTagClickable;
 import local.yhayashi.twitter.common.ImageCache;
 import local.yhayashi.twitter.db.TweetsInfo;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,6 +38,8 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 	public static final String PARAM_TWEET_INFO = "tweet_info";
 	/** ダイアログ フォロー確認 */
 	private static final int DIALOG_CONFIRM_FOLLOW = 0;
+	/** ダイアログ フォロー解除確認 */
+	private static final int DIALOG_CONFIRM_RELEASE_FOLLOW = 1;
 
 	/** ハッシュタグ正規表現 */
 	private Pattern hashtagPattern = Pattern.compile("((#|＃)[a-zA-Z0-9_\u3041-\u3094\u3099-\u309C\u30A1-\u30FA\u3400-\uD7FF\uFF10-\uFF19\uFF20-\uFF3A\uFF41-\uFF5A\uFF66-\uFF9E\u30a1-\u30fc]+)");
@@ -41,6 +47,18 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 	private TweetsInfo tweets;
 	/** Twitterオブジェクト */
 	private Twitter twitter;
+	/** フレンドシップ */
+	private boolean isFollows;
+	/** フォローボタン */
+	private Button followButton;
+	/** Toast:フォロー成功 */
+	private Toast followSuccess;
+	/** Toast:フォロー解除成功 */
+	private Toast releaseFollowSucess;
+	/** Toast:フォロー失敗 */
+	private Toast followFailed;
+	/** Toast:フォロー解除失敗 */
+	private Toast releasefollowFailed;
 	DateFormat dateFormat;
 	DateFormat timeFormat;
 
@@ -89,7 +107,10 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 		// 返信ボタン
 		((Button) findViewById(R.id.btn_detail_reply)).setOnClickListener(this);
 		// フォローボタン
-		((Button) findViewById(R.id.btn_detail_follow)).setOnClickListener(this);
+		followButton = (Button) findViewById(R.id.btn_detail_follow);
+		followButton();
+		// Toast生成
+		createToast();
 	}
 
 	@Override
@@ -108,10 +129,74 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 			startActivity(intent);
 			break;
 		case R.id.btn_detail_follow:
-			showDialog(DIALOG_CONFIRM_FOLLOW);
+			if (isFollows) {
+				showDialog(DIALOG_CONFIRM_RELEASE_FOLLOW);
+			} else {
+				showDialog(DIALOG_CONFIRM_FOLLOW);
+			}
 		}
 	}
 
+	private void followButton() {
+		(new AsyncTask<Long, Integer, Boolean>() {
+			@Override
+			protected Boolean doInBackground(Long... ids) {
+				try {
+					isFollows = twitter.existsFriendship(
+							String.valueOf(twitter.getId()),
+							String.valueOf(tweets.getUserId()));
+				} catch (IllegalStateException e) {
+				} catch (TwitterException e) {
+				}
+				return isFollows;
+			}
+
+			@Override
+			protected void onPostExecute(Boolean result) {
+				setFollowButton();
+				followButton.setOnClickListener(TweetDetail.this);
+				followButton.setEnabled(true);
+			}
+		}).execute();
+	}
+	private void setFollowButton() {
+		if (isFollows) {
+			followButton.setText(getString(R.string.btn_detail_release_follow));
+		} else {
+			followButton.setText(getString(R.string.btn_detail_follow));
+		}
+	}
+	private void createToast() {
+		followSuccess = createToast("フォローしました。");
+		releaseFollowSucess = createToast("フォロー解除しました。");
+		followFailed = createToast("フォローに失敗しました。");
+		releasefollowFailed = createToast("フォローに解除に失敗しました。");
+	}
+	private Toast createToast(String msg) {
+		Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.CENTER, 0, 0);
+		return toast;
+	}
+	private void follow() {
+		try {
+			twitter.createFriendship(tweets.getUserId());
+			followSuccess.show();
+			isFollows = true;
+			setFollowButton();
+		} catch (TwitterException e) {
+			followFailed.show();
+		}
+	}
+	private void releaseFollow() {
+		try {
+			twitter.destroyFriendship(tweets.getUserId());
+			releaseFollowSucess.show();
+			isFollows = false;
+			setFollowButton();
+		} catch (TwitterException e) {
+			releasefollowFailed.show();
+		}
+	}
 	/**
 	 * ハッシュタグの適用
 	 * @param text
@@ -132,7 +217,7 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 
 
 	@Override
-	protected Dialog onCreateDialog(int id, Bundle args) {
+	protected Dialog onCreateDialog(int id, Bundle bundle) {
 		switch (id) {
 		case DIALOG_CONFIRM_FOLLOW:
 			return new AlertDialog.Builder(this)
@@ -140,16 +225,30 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 			.setPositiveButton("はい", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
+					follow();
 				}
 			})
 			.setNegativeButton("いいえ", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 				}
+			}).create();
+		case DIALOG_CONFIRM_RELEASE_FOLLOW:
+			return new AlertDialog.Builder(this)
+			.setMessage("フォローを解除しますか？")
+			.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					releaseFollow();
+				}
 			})
-			.create();
+			.setNegativeButton("いいえ", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+				}
+			}).create();
 		}
-		return super.onCreateDialog(id, args);
+		return super.onCreateDialog(id, bundle);
 	}
 
 	

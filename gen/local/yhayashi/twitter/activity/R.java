@@ -95,6 +95,7 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f050001;
         public static final int btn_detail_follow=0x7f050034;
+        public static final int btn_detail_release_follow=0x7f050035;
         public static final int btn_detail_reply=0x7f050033;
         public static final int btn_map=0x7f05002e;
         public static final int btn_nearby=0x7f050014;
@@ -136,8 +137,8 @@ public final class R {
         public static final int footer_load_over=0x7f050012;
         /**  Hashtag 
          */
-        public static final int hashtag_add=0x7f050035;
-        public static final int hashtag_already_added=0x7f050036;
+        public static final int hashtag_add=0x7f050036;
+        public static final int hashtag_already_added=0x7f050037;
         public static final int hello=0x7f050000;
         public static final int item_time=0x7f050002;
         public static final int length_over=0x7f050020;
