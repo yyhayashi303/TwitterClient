@@ -64,6 +64,14 @@
     <string name="btn_detail_reply">返信</string>
     <string name="btn_detail_follow">フォローする</string>
     <string name="btn_detail_release_follow">フォロー解除</string>
+    <string name="detail_yes">はい</string>
+    <string name="detail_no">いいえ</string>
+    <string name="toast_detail_follow_success">フォローしました。</string>
+    <string name="toast_detail_follow_failed">フォローに失敗しました。</string>
+    <string name="toast_detail_release_follow_success">フォロー解除しました。</string>
+    <string name="toast_detail_release_follow_failed">フォロー解除に失敗しました。</string>
+    <string name="detail_confirm_follow">フォローしますか？</string>
+    <string name="detail_confirm_release_follow">フォロー解除しますか？</string>
 
     <!-- Hashtag -->
     <string name="hashtag_add">登録しました。</string>

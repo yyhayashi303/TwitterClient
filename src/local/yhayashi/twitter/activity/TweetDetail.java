@@ -25,7 +25,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -167,10 +166,10 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 		}
 	}
 	private void createToast() {
-		followSuccess = createToast("フォローしました。");
-		releaseFollowSucess = createToast("フォロー解除しました。");
-		followFailed = createToast("フォローに失敗しました。");
-		releasefollowFailed = createToast("フォローに解除に失敗しました。");
+		followSuccess = createToast(getString(R.string.toast_detail_follow_success));
+		releaseFollowSucess = createToast(getString(R.string.toast_detail_release_follow_success));
+		followFailed = createToast(getString(R.string.toast_detail_follow_failed));
+		releasefollowFailed = createToast(getString(R.string.toast_detail_release_follow_failed));
 	}
 	private Toast createToast(String msg) {
 		Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
@@ -221,28 +220,28 @@ public class TweetDetail extends Activity implements View.OnClickListener {
 		switch (id) {
 		case DIALOG_CONFIRM_FOLLOW:
 			return new AlertDialog.Builder(this)
-			.setMessage("フォローしますか？")
-			.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+			.setMessage(getString(R.string.detail_confirm_follow))
+			.setPositiveButton(getString(R.string.detail_yes), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					follow();
 				}
 			})
-			.setNegativeButton("いいえ", new DialogInterface.OnClickListener() {
+			.setNegativeButton(getString(R.string.detail_no), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 				}
 			}).create();
 		case DIALOG_CONFIRM_RELEASE_FOLLOW:
 			return new AlertDialog.Builder(this)
-			.setMessage("フォローを解除しますか？")
-			.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+			.setMessage(getString(R.string.detail_confirm_release_follow))
+			.setPositiveButton(getString(R.string.detail_yes), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					releaseFollow();
 				}
 			})
-			.setNegativeButton("いいえ", new DialogInterface.OnClickListener() {
+			.setNegativeButton(getString(R.string.detail_no), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 				}

@@ -109,9 +109,13 @@ public final class R {
         public static final int context_menu_reply=0x7f050006;
         public static final int context_menu_share=0x7f050007;
         public static final int context_menu_title=0x7f050005;
+        public static final int detail_confirm_follow=0x7f05003c;
+        public static final int detail_confirm_release_follow=0x7f05003d;
+        public static final int detail_no=0x7f050037;
         /**  詳細 
          */
         public static final int detail_screan_name=0x7f050032;
+        public static final int detail_yes=0x7f050036;
         public static final int dialog_connected_failed_message=0x7f05000e;
         public static final int dialog_connected_failed_negative=0x7f050010;
         public static final int dialog_connected_failed_positive=0x7f05000f;
@@ -137,8 +141,8 @@ public final class R {
         public static final int footer_load_over=0x7f050012;
         /**  Hashtag 
          */
-        public static final int hashtag_add=0x7f050036;
-        public static final int hashtag_already_added=0x7f050037;
+        public static final int hashtag_add=0x7f05003e;
+        public static final int hashtag_already_added=0x7f05003f;
         public static final int hello=0x7f050000;
         public static final int item_time=0x7f050002;
         public static final int length_over=0x7f050020;
@@ -160,6 +164,10 @@ public final class R {
         /**  Nearby 
          */
         public static final int title_nearby=0x7f05002d;
+        public static final int toast_detail_follow_failed=0x7f050039;
+        public static final int toast_detail_follow_success=0x7f050038;
+        public static final int toast_detail_release_follow_failed=0x7f05003b;
+        public static final int toast_detail_release_follow_success=0x7f05003a;
         public static final int tweet_update_failed=0x7f050022;
     }
 }
